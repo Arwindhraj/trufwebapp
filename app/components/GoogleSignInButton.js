@@ -1,4 +1,4 @@
-// components/GoogleSignInButton.js
+// app/components/GoogleSignInButton.js
 "use client";
 import { useEffect } from 'react';
 import { auth, provider } from '../firebaseConfig';
@@ -10,8 +10,6 @@ const GoogleSignInButton = () => {
     if (typeof window === 'undefined') {
       return;
     }
-
-    // Add any additional client-side logic here
   }, []);
 
   const handleSignIn = async () => {
@@ -26,11 +24,25 @@ const GoogleSignInButton = () => {
       console.error('Error during sign-in:', error.message);
     }
   };
+  
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error('Error during sign-out:', error.message);
+    }
+  };
 
   return (
-    <button onClick={handleSignIn} className="bg-gray-100 p-2 rounded-md shadow">
-      <img src="favicon.ico" alt="Google" className="w-6 h-6"/>
-    </button>
+    <main>
+      <button onClick={handleSignIn} className="bg-gray-100 p-2 rounded-md shadow">
+        <img src="favicon.ico" alt="Google" className="w-6 h-6"/>
+      </button>
+      <button onClick={handleSignIn} className="bg-gray-100 p-2 rounded-md shadow">
+        <img src="a.ico" alt="Google" className="w-6 h-6"/>
+      </button>
+    </main>
   );
 };
 

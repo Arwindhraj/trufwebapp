@@ -28,5 +28,6 @@ if (typeof window !== 'undefined') {
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-
-export { auth, provider };
+// const auth = typeof window !== 'undefined' && app ? getAuth(app) : null;
+// const provider = typeof window !== 'undefined' && app ? new GoogleAuthProvider() : null;
+export { auth, provider  };
